@@ -42,7 +42,31 @@ namespace InterviewAssignment
             //You should go through the states and print that on what hierarchy path the current state
             //is found. So if state is Initializing this method should return "Down.Initializing" because
             //"Initializing" is substate of "Down".
-            throw new NotImplementedException();
+            string result = null;
+            foreach (IState<TState, TEvent> s in States)
+            {
+                foreach(IState<TState, TEvent> subState in s.SubStates)
+                {
+                    if (subState.Id.Equals(state) && subState.SubStates.Count == 0)
+                    {
+                        result = s.ToString() + separator + subState.ToString();
+                        break;
+                    }
+                    else if(subState.SubStates.Count != 0)
+                    {
+                        foreach (IState<TState, TEvent> subSubState in subState.SubStates)
+                        {
+                            if (subSubState.Id.Equals(state))
+                            {
+                                result = s.ToString() + separator + subState.ToString() + separator + subSubState.ToString();
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (result != null) break;
+            }
+            return result;
         }
     }
 }
