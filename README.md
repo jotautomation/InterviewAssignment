@@ -15,4 +15,4 @@ Please follow these instructions:
 4. That's it! You are done. 
 
 
-On any problems please contact rami.rahikkala@jotautomation.com 
+On any problems please contact tomi.maijala@jotautomation.com 
